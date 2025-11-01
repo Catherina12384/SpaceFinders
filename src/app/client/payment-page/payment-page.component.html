@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction Page</title>
+  
+</head>
+<body>
+  <div class="transaction-container">
+    <!-- Header -->
+    <div class="header">
+      <button class="back-button" (click)="goBack()">
+        <span class="back-label">← BACK</span>
+      </button>
+      <h1 class="page-title">Transaction Details</h1>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <mat-icon>error</mat-icon>
+      <p>{{errorMessage}}</p>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-message">
+      <mat-icon>check_circle</mat-icon>
+      <p>{{successMessage}}</p>
+    </div>
+
+    <!-- Payment Content -->
+    <div *ngIf="paymentData" class="payment-content">
+      
+      <!-- House Information Card -->
+      <mat-card class="card house-card fade-in">
+        <h2>Property Information</h2>
+        <div class="house-info">
+          <img 
+            [src]="paymentData.propertyImage" 
+            [alt]="paymentData.propertyName"
+            (error)="handleImageError($event)"
+            class="property-image">
+          <div class="details">
+            <h3>{{paymentData.propertyName}}</h3>
+            <p class="location">
+              <mat-icon>location_on</mat-icon>
+              {{paymentData.propertyLocation}}
+            </p>
+            <p class="price">{{formatPrice(paymentData.pricePerNight)}}/night</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Booking Summary Card -->
+      <mat-card class="card summary-card fade-in delay-1">
+        <h2>Booking Summary</h2>
+        <div class="summary">
+          <div class="item">
+            <span class="label">Check-in</span>
+            <span class="value">{{formatDate(paymentData.checkinDate)}}</span>
+          </div>
+          <div class="item">
+            <span class="label">Check-out</span>
+            <span class="value">{{formatDate(paymentData.checkoutDate)}}</span>
+          </div>
+          <div class="item">
+            <span class="label">Number of Nights</span>
+            <span class="value">{{paymentData.numberOfNights}} night{{paymentData.numberOfNights > 1 ? 's' : ''}}</span>
+          </div>
+          <div class="item">
+            <span class="label">Max Guests</span>
+            <span class="value">{{paymentData.maxGuests}} guest{{paymentData.maxGuests > 1 ? 's' : ''}}</span>
+          </div>
+          <div *ngIf="paymentData.hasExtraCot || paymentData.hasDeepClean" class="services-section">
+            <mat-divider></mat-divider>
+            <h3>Additional Services</h3>
+            <div class="item" *ngIf="paymentData.hasExtraCot">
+              <span class="label">
+                <mat-icon>bed</mat-icon>
+                Extra Cot
+              </span>
+              <span class="value">
+                <mat-icon class="check-icon">check_circle</mat-icon>
+              </span>
+            </div>
+            <div class="item" *ngIf="paymentData.hasDeepClean">
+              <span class="label">
+                <mat-icon>cleaning_services</mat-icon>
+                Deep Clean
+              </span>
+              <span class="value">
+                <mat-icon class="check-icon">check_circle</mat-icon>
+              </span>
+            </div>
+          </div>
+          
+          <!-- Price Breakdown -->
+          <mat-divider></mat-divider>
+          <div class="item price-breakdown">
+            <span class="label">{{formatPrice(paymentData.pricePerNight)}} × {{paymentData.numberOfNights}} night{{paymentData.numberOfNights > 1 ? 's' : ''}}</span>
+            <span class="value">{{formatPrice(paymentData.pricePerNight * paymentData.numberOfNights)}}</span>
+          </div>
+          
+          <mat-divider class="total-divider"></mat-divider>
+          <div class="item total">
+            <span class="label">Total Amount</span>
+            <span class="value">{{formatPrice(paymentData.totalAmount)}}</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Payment Information Card -->
+      <mat-card class="card payment-card fade-in delay-2">
+        <h2>Payment Information</h2>
+        
+        <!-- Payment Form (visible when not successful) -->
+        <div *ngIf="!successMessage" class="payment-form">
+          <mat-form-field appearance="outline" class="account-field">
+            <mat-label>Account Number</mat-label>
+            <input 
+              matInput 
+              type="text" 
+              [(ngModel)]="accountNumber"
+              placeholder="Enter your account number"
+              [disabled]="isProcessing"
+              required>
+            <mat-icon matPrefix>account_balance</mat-icon>
+          </mat-form-field>
+          
+          <button 
+            mat-raised-button 
+            color="primary" 
+            class="pay-btn"
+            (click)="processPayment()"
+            [disabled]="isProcessing || !accountNumber">
+            <mat-spinner *ngIf="isProcessing" diameter="20" class="button-spinner"></mat-spinner>
+            <mat-icon *ngIf="!isProcessing">payment</mat-icon>
+            {{isProcessing ? 'Processing...' : 'Proceed to Payment'}}
+          </button>
+        </div>
+
+        <!-- Success State (visible after successful payment) -->
+        <div *ngIf="successMessage" class="success-state">
+          <div class="success-icon-container">
+            <mat-icon class="success-icon-large">check_circle</mat-icon>
+          </div>
+          <h3>Payment Successful!</h3>
+          <p class="success-description">Your booking has been confirmed and payment processed successfully.</p>
+          
+          <div class="action-buttons">
+            <button 
+              mat-raised-button 
+              color="primary">
+              <mat-icon>list_alt</mat-icon>
+              View My Bookings
+            </button>
+            
+            <button 
+              mat-stroked-button 
+              color="primary">
+              <mat-icon>search</mat-icon>
+              Search More Properties
+            </button>
+          </div>
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+</body>
+</html>

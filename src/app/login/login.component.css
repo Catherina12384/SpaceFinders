@@ -1,0 +1,121 @@
+/* Corporate Login Component Styles */
+.mat-form-field-appearance-outline .mat-form-field-label {
+  transform: translateY(-1.2em) scale(0.85) !important;
+}
+.login-card {
+  max-width: 420px;
+  width: 100%;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.full-width mat-form-field {
+  width: 100%;
+}
+
+.form-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-top: -8px;
+}
+
+.forgot-link {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.submit-button {
+  padding: 12px 24px !important;
+  margin-top: 8px;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  height: 44px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 4px !important;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3) !important;
+}
+
+.signup-section {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #E0E0E0;
+}
+
+.signup-section p {
+  margin: 0;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.signup-section button {
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+/* Hide icons */
+mat-icon {
+  display: none !important;
+}
+
+/* Alert badge styling */
+.alert-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: transparent;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Password toggle button */
+.password-toggle-btn {
+  min-width: auto;
+  padding: 4px 8px;
+}
+
+.toggle-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #1976D2;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    max-width: 100%;
+  }
+  
+  .submit-button {
+    font-size: 14px !important;
+  }
+}

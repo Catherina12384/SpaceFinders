@@ -1,0 +1,763 @@
+/* Corporate Professional Theme */
+:root {
+  /* Primary Colors */
+  --corp-primary: #1976D2;
+  --corp-primary-dark: #1565C0;
+  --corp-primary-light: #42A5F5;
+  
+  /* Neutral Colors */
+  --corp-bg: #FAFAFA;
+  --corp-surface: #FFFFFF;
+  --corp-border: #E0E0E0;
+  --corp-divider: #BDBDBD;
+  
+  /* Text Colors */
+  --corp-text-primary: #212121;
+  --corp-text-secondary: #757575;
+  --corp-text-disabled: #BDBDBD;
+  
+  /* Status Colors */
+  --corp-success: #4CAF50;
+  --corp-warning: #FF9800;
+  --corp-error: #F44336;
+  --corp-info: #2196F3;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.18);
+  
+  /* Transitions */
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and base styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--corp-bg);
+  color: var(--corp-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Center container */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  background-color: var(--corp-bg);
+}
+
+/* Material Card overrides */
+mat-card {
+  background-color: var(--corp-surface) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid var(--corp-border) !important;
+  transition: var(--transition) !important;
+}
+
+mat-card:hover {
+  box-shadow: var(--shadow-md) !important;
+}
+
+mat-card-header {
+  border-bottom: 1px solid var(--corp-border) !important;
+  padding-bottom: 16px !important;
+}
+
+mat-card-title {
+  color: var(--corp-text-primary) !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
+
+mat-card-subtitle {
+  color: var(--corp-text-secondary) !important;
+  font-size: 14px !important;
+  margin: 4px 0 0 0 !important;
+  font-weight: 400 !important;
+}
+
+mat-card-content {
+  padding: 24px !important;
+  color: var(--corp-text-primary) !important;
+}
+
+/* Form field styling */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mdc-text-field--outlined {
+  background-color: var(--corp-surface) !important;
+  border-radius: 4px !important;
+  transition: var(--transition) !important;
+}
+
+.mdc-text-field--outlined:hover {
+  border-color: var(--corp-primary-light) !important;
+}
+
+.mdc-text-field--focused {
+  border-color: var(--corp-primary) !important;
+}
+
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: var(--corp-border) !important;
+  transition: var(--transition) !important;
+}
+
+.mdc-text-field--outlined:hover .mdc-notched-outline__leading,
+.mdc-text-field--outlined:hover .mdc-notched-outline__notch,
+.mdc-text-field--outlined:hover .mdc-notched-outline__trailing {
+  border-color: var(--corp-primary-light) !important;
+}
+
+.mdc-text-field--focused .mdc-notched-outline__leading,
+.mdc-text-field--focused .mdc-notched-outline__notch,
+.mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: var(--corp-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Make labels always visible - not floating */
+.mat-mdc-form-field-label {
+  color: var(--corp-text-secondary) !important;
+  font-weight: 400 !important;
+  position: static !important;
+  transform: none !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+  font-size: 14px !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-form-field-label {
+  color: var(--corp-primary) !important;
+}
+
+/* Force labels to always show above input */
+.mat-mdc-form-field .mat-mdc-floating-label {
+  position: static !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+  font-size: 14px !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  transform: none !important;
+  color: var(--corp-primary) !important;
+}
+
+/* Always show the label notch/placeholder area */
+.mdc-notched-outline__notch {
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Adjust input padding when label is always visible */
+.mat-mdc-form-field-label-always-float .mat-mdc-text-field-wrapper {
+  padding-top: 16px !important;
+}
+
+/* Alternative: Use mat-label explicitly instead of placeholder */
+mat-label {
+  display: block !important;
+  color: var(--corp-text-secondary) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  margin-bottom: 8px !important;
+  position: static !important;
+}
+
+.mat-mdc-input-element {
+  color: var(--corp-text-primary) !important;
+  caret-color: var(--corp-primary) !important;
+  font-size: 14px !important;
+}
+
+.mat-mdc-input-element::placeholder {
+  color: var(--corp-text-disabled) !important;
+  opacity: 1;
+}
+
+/* Hide placeholder when using mat-label above */
+.mat-mdc-form-field mat-label ~ input::placeholder {
+  opacity: 0;
+}
+
+/* Show label above input field always */
+.mat-mdc-text-field-wrapper {
+  padding-top: 0 !important;
+}
+
+.mdc-text-field--outlined .mdc-notched-outline {
+  top: 0 !important;
+}
+
+.mdc-text-field--outlined .mdc-floating-label {
+  position: static !important;
+  transform: none !important;
+  top: auto !important;
+  left: auto !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+.mdc-text-field--outlined .mdc-floating-label--float-above {
+  transform: none !important;
+  font-size: 14px !important;
+}
+
+/* More comprehensive label visibility fix */
+.mdc-text-field {
+  margin-top: 0 !important;
+}
+
+.mdc-text-field--outlined .mdc-floating-label {
+  position: absolute !important;
+  top: -10px !important;
+  left: 0 !important;
+  transform: none !important;
+  font-size: 12px !important;
+  background-color: var(--corp-surface) !important;
+  padding: 0 4px !important;
+  color: var(--corp-text-secondary) !important;
+  pointer-events: none !important;
+  white-space: nowrap !important;
+}
+
+.mdc-text-field--outlined .mdc-floating-label--float-above {
+  top: -10px !important;
+  transform: none !important;
+  font-size: 12px !important;
+  color: var(--corp-text-secondary) !important;
+}
+
+.mdc-text-field--focused .mdc-floating-label,
+.mdc-text-field--focused .mdc-floating-label--float-above {
+  color: var(--corp-primary) !important;
+}
+
+/* Show label even when input is empty */
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Make placeholder work as visible label when field is empty */
+.mat-mdc-form-field:not(.mat-focused) .mdc-text-field--outlined:not(.mdc-text-field--disabled) input::placeholder {
+  opacity: 1 !important;
+  color: var(--corp-text-secondary) !important;
+  font-size: 14px !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-text-field--outlined input::placeholder {
+  opacity: 0.6 !important;
+}
+
+/* Ensure mat-label always shows above input */
+mat-label {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  color: var(--corp-text-secondary) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  margin-bottom: 8px !important;
+  line-height: 1.5 !important;
+}
+
+.mat-mdc-form-field.mat-focused mat-label {
+  color: var(--corp-primary) !important;
+}
+
+/* Force labels to always float above - workaround for floating label behavior */
+.mat-mdc-form-field:not(.mat-form-field-should-float) .mdc-floating-label,
+.mat-mdc-form-field .mdc-floating-label {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(-20px) scale(0.75) !important;
+  color: var(--corp-text-secondary) !important;
+  font-size: 12px !important;
+  pointer-events: none !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-floating-label,
+.mat-mdc-form-field.mat-form-field-should-float .mdc-floating-label {
+  transform: translateY(-20px) scale(0.75) !important;
+  color: var(--corp-primary) !important;
+}
+
+/* When using mat-label, don't show floating label */
+.mat-mdc-form-field mat-label ~ .mdc-floating-label {
+  display: none !important;
+}
+
+/* Ensure label notch doesn't interfere when using mat-label */
+.mat-mdc-form-field mat-label ~ .mdc-notched-outline__notch {
+  display: none !important;
+}
+
+/* Universal fix: Force all floating labels to always show above input */
+.mdc-text-field--outlined .mdc-floating-label {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(-20px) scale(0.75) !important;
+  color: var(--corp-text-secondary) !important;
+  font-size: 12px !important;
+  top: 16px !important;
+  left: 16px !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Always show floating label even when input is empty */
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--filled) .mdc-floating-label {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(-20px) scale(0.75) !important;
+}
+
+.mdc-text-field--outlined.mdc-text-field--focused .mdc-floating-label,
+.mdc-text-field--outlined.mdc-text-field--filled .mdc-floating-label--float-above,
+.mdc-text-field--outlined.mdc-text-field--filled .mdc-floating-label {
+  transform: translateY(-20px) scale(0.75) !important;
+  color: var(--corp-primary) !important;
+}
+
+/* Make placeholder visible but subtle when field has mat-label */
+.mat-mdc-form-field mat-label ~ input::placeholder,
+.mat-mdc-form-field mat-label ~ textarea::placeholder {
+  opacity: 0.5 !important;
+  color: var(--corp-text-disabled) !important;
+}
+
+/* Show placeholder more prominently when no mat-label and field is empty */
+.mat-mdc-form-field:not(.mat-form-field-should-float):not(:has(mat-label)) input::placeholder,
+.mat-mdc-form-field:not(.mat-form-field-should-float):not(:has(mat-label)) textarea::placeholder {
+  opacity: 0.8 !important;
+  color: var(--corp-text-secondary) !important;
+}
+
+/* Hide all Material icons globally - using text alternatives */
+mat-icon {
+  display: none !important;
+}
+
+/* Prefix/suffix labels for form fields */
+.mat-mdc-form-field.mat-form-field-appearance-outline .mat-mdc-form-field-prefix,
+.mat-mdc-form-field.mat-form-field-appearance-outline .mat-mdc-form-field-suffix {
+  display: none !important;
+}
+
+/* Back button styling - make it visible with text */
+.back-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  height: 40px;
+  padding: 8px 16px;
+  background-color: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  color: #212121;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #F5F5F5;
+  border-color: #1976D2;
+  color: #1976D2;
+}
+
+.back-label {
+  display: inline-block !important;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: inherit;
+}
+
+/* Ensure back button is visible even in Material icon buttons */
+button.back-button mat-icon {
+  display: none !important;
+}
+
+/* Button styling */
+.mat-mdc-button,
+.mat-mdc-raised-button {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: var(--transition) !important;
+  text-transform: none !important;
+  border-radius: 4px !important;
+}
+
+.mat-mdc-raised-button[color="primary"] {
+  background-color: var(--corp-primary) !important;
+  color: white !important;
+}
+
+.mat-mdc-raised-button[color="primary"]:hover {
+  background-color: var(--corp-primary-dark) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.mat-mdc-raised-button[color="primary"]:disabled {
+  background-color: var(--corp-border) !important;
+  color: var(--corp-text-disabled) !important;
+  opacity: 0.6;
+}
+
+.mat-mdc-button[color="primary"] {
+  color: var(--corp-primary) !important;
+}
+
+.mat-mdc-button[color="primary"]:hover {
+  background-color: rgba(25, 118, 210, 0.08) !important;
+}
+
+.mat-mdc-icon-button {
+  color: var(--corp-text-secondary) !important;
+}
+
+.mat-mdc-icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Error and success messaging */
+.alert {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border-left: 4px solid;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-danger {
+  background-color: rgba(244, 67, 54, 0.1) !important;
+  border-color: var(--corp-error) !important;
+  color: #C62828 !important;
+}
+
+.alert-danger mat-icon {
+  color: var(--corp-error) !important;
+}
+
+.alert-success {
+  background-color: rgba(76, 175, 80, 0.1) !important;
+  border-color: var(--corp-success) !important;
+  color: #2E7D32 !important;
+}
+
+.alert-success mat-icon {
+  color: var(--corp-success) !important;
+}
+
+.alert mat-icon {
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Material checkbox and radio styling */
+.mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+  border-color: var(--corp-primary) !important;
+  background-color: var(--corp-primary) !important;
+}
+
+.mat-mdc-radio-button.mat-mdc-radio-checked
+  .mdc-radio__native-control:checked
+  ~ .mdc-radio__background
+  .mdc-radio__outer-circle {
+  border-color: var(--corp-primary) !important;
+}
+
+.mat-mdc-radio-button.mat-mdc-radio-checked
+  .mdc-radio__native-control:checked
+  ~ .mdc-radio__background
+  .mdc-radio__inner-circle {
+  background-color: var(--corp-primary) !important;
+}
+
+/* Spinner styling */
+.mat-mdc-progress-spinner circle {
+  stroke: var(--corp-primary) !important;
+}
+
+/* Material list styling */
+mat-list {
+  padding: 0 !important;
+}
+
+.mat-mdc-list-item {
+  color: var(--corp-text-primary) !important;
+  height: auto !important;
+}
+
+/* Error text styling */
+mat-error {
+  color: var(--corp-error) !important;
+  font-size: 12px !important;
+  margin-top: 4px !important;
+}
+
+/* Links */
+a {
+  color: var(--corp-primary) !important;
+  text-decoration: none;
+  transition: var(--transition) !important;
+}
+
+a:hover {
+  color: var(--corp-primary-dark) !important;
+  text-decoration: underline;
+}
+
+/* Dropdown/Select styling - Corporate theme */
+.mat-mdc-select-panel,
+.cdk-overlay-pane .mat-mdc-select-panel,
+.mat-mdc-select-panel-above .mat-mdc-select-panel {
+  background-color: white !important;
+  border: 1px solid #E0E0E0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+  padding: 8px 0 !important;
+  min-width: 112px !important;
+}
+
+.mat-mdc-option,
+.mdc-list-item {
+  background-color: white !important;
+  color: #212121 !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+  min-height: 48px !important;
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled),
+.mdc-list-item:hover:not(.mdc-list-item--disabled) {
+  background-color: #FAFAFA !important;
+  color: #212121 !important;
+}
+
+.mat-mdc-option.mat-mdc-option-active,
+.mat-mdc-option:focus:not(.mdc-list-item--disabled),
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled),
+.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+  background-color: rgba(25, 118, 210, 0.08) !important;
+  color: #1976D2 !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected,
+.mdc-list-item--selected {
+  background-color: rgba(25, 118, 210, 0.12) !important;
+  color: #1976D2 !important;
+  font-weight: 500 !important;
+}
+
+.mat-mdc-option.mdc-list-item--disabled,
+.mdc-list-item--disabled {
+  color: #BDBDBD !important;
+  opacity: 0.6 !important;
+  background-color: #FAFAFA !important;
+}
+
+/* Select panel container - ensure white background */
+.cdk-overlay-container,
+.cdk-overlay-pane {
+  background-color: transparent !important;
+}
+
+.cdk-overlay-container .mat-mdc-select-panel,
+.cdk-overlay-container .mat-mdc-select-panel .mdc-list,
+.cdk-overlay-container .mat-mdc-select-panel .mdc-list-item__primary-text,
+.cdk-overlay-container .mat-mdc-select-panel .mdc-list-item__content {
+  background-color: white !important;
+  color: #212121 !important;
+}
+
+/* Ensure all dropdown menu backgrounds are white */
+.mat-mdc-select-panel .mdc-list,
+.mat-mdc-select-panel .mdc-menu,
+.mat-mdc-select-panel .mat-mdc-option,
+.mat-mdc-select-panel .mat-mdc-list-item {
+  background-color: white !important;
+  color: #212121 !important;
+}
+
+/* Override any dark theme styles for dropdowns - more specific selectors */
+.mat-mdc-select-panel {
+  background-color: white !important;
+}
+
+.mat-mdc-select-panel .mdc-list {
+  background-color: white !important;
+}
+
+.mat-mdc-select-panel .mdc-list-item {
+  background-color: white !important;
+}
+
+.mat-mdc-select-panel .mdc-list-item__content,
+.mat-mdc-select-panel .mdc-list-item__primary-text,
+.mat-mdc-select-panel .mdc-list-item__secondary-text {
+  background-color: transparent !important;
+  color: #212121 !important;
+}
+
+.mat-mdc-select-panel .mat-mdc-option,
+.mat-mdc-select-panel .mdc-list-item__ripple {
+  background-color: white !important;
+}
+
+/* Ensure all dropdown backgrounds are white */
+.cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Additional dropdown overrides */
+.mat-mdc-menu-panel,
+.mat-mdc-menu-panel .mat-mdc-menu-content,
+.mat-mdc-menu-panel .mdc-list {
+  background-color: white !important;
+  color: #212121 !important;
+}
+
+/* Select trigger styling */
+.mat-mdc-select-trigger {
+  color: var(--corp-text-primary) !important;
+}
+
+.mat-mdc-select-placeholder {
+  color: var(--corp-text-secondary) !important;
+}
+
+.mat-mdc-select-value {
+  color: var(--corp-text-primary) !important;
+}
+
+.mat-mdc-select-arrow {
+  color: var(--corp-text-secondary) !important;
+}
+
+.mat-mdc-select:focus .mat-mdc-select-arrow {
+  color: var(--corp-primary) !important;
+}
+
+/* Material Stepper styling - Corporate theme */
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: white !important;
+  color: var(--corp-text-primary) !important;
+}
+
+.mat-step-header {
+  background-color: white !important;
+  color: #212121 !important;
+}
+
+.mat-step-header .mat-step-icon {
+  background-color: #E0E0E0 !important;
+  color: #757575 !important;
+  border-color: #E0E0E0 !important;
+}
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: #1976D2 !important;
+  color: white !important;
+  border-color: #1976D2 !important;
+}
+
+.mat-step-header .mat-step-icon-state-done {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  border-color: #4CAF50 !important;
+}
+
+.mat-step-header .mat-step-label {
+  color: #757575 !important;
+}
+
+.mat-step-header .mat-step-label-selected {
+  color: #1976D2 !important;
+}
+
+.mat-stepper-horizontal-line {
+  border-top-color: #E0E0E0 !important;
+}
+
+.mat-step-content {
+  background-color: white !important;
+  color: var(--corp-text-primary) !important;
+}
+
+.mat-step-body {
+  background-color: white !important;
+}
+
+.mat-step-body-content {
+  background-color: white !important;
+  color: var(--corp-text-primary) !important;
+}
+
+/* Ensure stepper container is white */
+.mat-stepper-container {
+  background-color: white !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--corp-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--corp-divider);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--corp-text-secondary);
+}

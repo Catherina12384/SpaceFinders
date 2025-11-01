@@ -1,0 +1,375 @@
+<div class="search-properties-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <button (click)="goBack()" class="back-button">
+        <span class="back-label">← BACK</span>
+      </button>
+      <h1>Search Properties</h1>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-section">
+    <mat-card class="search-card">
+      <div class="search-bar">
+        <mat-form-field appearance="outline" class="search-input">
+          <mat-label>Search properties by name, location, or description</mat-label>
+          <input matInput 
+                 [(ngModel)]="searchTerm" 
+                 (input)="applyFilters()"
+                 placeholder="Enter search term...">
+        </mat-form-field>
+        
+        <button mat-raised-button 
+                color="primary" 
+                (click)="applyFilters()"
+                class="search-button">
+          Search
+        </button>
+        
+        <button mat-stroked-button 
+                (click)="showFilters = !showFilters"
+                class="filter-toggle"
+                [color]="getActiveFiltersCount() > 0 ? 'primary' : ''">
+          Filters
+          <span *ngIf="getActiveFiltersCount() > 0" class="filter-badge">
+            {{getActiveFiltersCount()}}
+          </span>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Filters Panel -->
+  <div class="filters-section" *ngIf="showFilters">
+    <mat-card class="filters-card">
+      <div class="filters-header">
+        <h3>
+          <mat-icon>tune</mat-icon>
+          Filter Properties
+        </h3>
+        <button mat-button 
+                (click)="clearFilters()" 
+                class="clear-filters"
+                [disabled]="!hasActiveFilters()">
+          Clear All Filters
+        </button>
+      </div>
+      
+      <div class="filters-grid">
+        <!-- Location Filters -->
+        <div class="filter-group">
+          <h4>
+            Location
+          </h4>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <mat-select [(ngModel)]="searchFilters.country" (selectionChange)="applyFilters()">
+              <mat-option value="">All Countries</mat-option>
+              <mat-option *ngFor="let country of countries" [value]="country">
+                {{country}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select [(ngModel)]="searchFilters.state" (selectionChange)="applyFilters()">
+              <mat-option value="">All States</mat-option>
+              <mat-option *ngFor="let state of states" [value]="state">
+                {{state}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <mat-select [(ngModel)]="searchFilters.city" (selectionChange)="applyFilters()">
+              <mat-option value="">All Cities</mat-option>
+              <mat-option *ngFor="let city of cities" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Price Range -->
+        <div class="filter-group">
+          <h4>
+            <mat-icon>payments</mat-icon>
+            Price Range (per night)
+          </h4>
+          <div class="price-range">
+            <mat-form-field appearance="outline">
+              <mat-label>Min Price</mat-label>
+              <input matInput 
+                     type="number" 
+                     [(ngModel)]="searchFilters.minPrice" 
+                     (ngModelChange)="applyFilters()"
+                     min="0"
+                     placeholder="₹0">
+              <span matPrefix>₹&nbsp;</span>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Max Price</mat-label>
+              <input matInput 
+                     type="number" 
+                     [(ngModel)]="searchFilters.maxPrice" 
+                     (ngModelChange)="applyFilters()"
+                     min="0"
+                     placeholder="₹100000">
+              <span matPrefix>₹&nbsp;</span>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Property Details -->
+        <div class="filter-group">
+          <h4>
+            Property Details
+          </h4>
+          <mat-form-field appearance="outline">
+            <mat-label>Minimum Rooms</mat-label>
+            <input matInput 
+                   type="number" 
+                   [(ngModel)]="searchFilters.minRooms" 
+                   (ngModelChange)="applyFilters()"
+                   min="0"
+                   placeholder="Any">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Minimum Bathrooms</mat-label>
+            <input matInput 
+                   type="number" 
+                   [(ngModel)]="searchFilters.minBathrooms" 
+                   (ngModelChange)="applyFilters()"
+                   min="0"
+                   placeholder="Any">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Minimum Guests</mat-label>
+            <input matInput 
+                   type="number" 
+                   [(ngModel)]="searchFilters.minGuests" 
+                   (ngModelChange)="applyFilters()"
+                   min="0"
+                   placeholder="Any">
+          </mat-form-field>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="filter-group">
+          <h4>
+            Property Status
+          </h4>
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="searchFilters.status" (selectionChange)="applyFilters()">
+              <mat-option *ngFor="let status of statusOptions" [value]="status.value">
+                {{status.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Amenities -->
+        <div class="filter-group amenities-group">
+          <h4>
+            Amenities
+          </h4>
+          <div class="amenities-grid">
+            <mat-checkbox 
+              *ngFor="let amenity of availableAmenities"
+              [checked]="searchFilters.amenities.includes(amenity.key)"
+              (change)="toggleAmenity(amenity.key); applyFilters()"
+              class="amenity-checkbox">
+              <div class="amenity-label">
+                <span>{{amenity.label}}</span>
+              </div>
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Results Section -->
+  <div class="results-section">
+    <div class="results-header">
+      <div class="results-info">
+        <h2>
+          <mat-icon>home_work</mat-icon>
+          {{filteredProperties.length}} Properties Found
+        </h2>
+        <p *ngIf="allProperties.length > 0">
+          Showing {{filteredProperties.length}} of {{allProperties.length}} total properties
+        </p>
+        <p *ngIf="hasActiveFilters()" class="active-filters-text">
+          <mat-icon>filter_alt</mat-icon>
+          {{getActiveFiltersCount()}} active filter(s)
+        </p>
+      </div>
+      
+      <div class="sort-controls">
+        <mat-form-field appearance="outline" class="sort-field">
+          <mat-label>Sort by</mat-label>
+          <mat-select [(ngModel)]="sortBy" (selectionChange)="sortProperties()">
+            <mat-option value="price">Price</mat-option>
+            <mat-option value="rating">Rating</mat-option>
+            <mat-option value="name">Name</mat-option>
+            <mat-option value="rooms">Rooms</mat-option>
+            <mat-option value="guests">Max Guests</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <button mat-icon-button 
+                (click)="sortOrder = sortOrder === 'asc' ? 'desc' : 'asc'; sortProperties()"
+                class="sort-order"
+                [title]="sortOrder === 'asc' ? 'Ascending' : 'Descending'">
+          <mat-icon>{{sortOrder === 'asc' ? 'arrow_upward' : 'arrow_downward'}}</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading properties...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <mat-icon>error</mat-icon>
+      <div>
+        <strong>Error</strong>
+        <p>{{errorMessage}}</p>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-message">
+      <mat-icon>check_circle</mat-icon>
+      <p>{{successMessage}}</p>
+    </div>
+
+    <!-- No Results -->
+    <div *ngIf="!isLoading && filteredProperties.length === 0 && allProperties.length > 0" class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <h3>No properties match your criteria</h3>
+      <p>Try adjusting your search terms or filters to find more properties</p>
+      <button mat-raised-button color="primary" (click)="clearFilters()">
+        <mat-icon>refresh</mat-icon>
+        Clear All Filters
+      </button>
+    </div>
+
+    <!-- No Properties at All -->
+    <div *ngIf="!isLoading && allProperties.length === 0" class="no-results">
+      <mat-icon>home_work</mat-icon>
+      <h3>No properties available</h3>
+      <p>There are currently no properties in the system</p>
+    </div>
+
+    <!-- Properties Grid -->
+    <div *ngIf="!isLoading && filteredProperties.length > 0" class="properties-grid">
+      <mat-card *ngFor="let property of filteredProperties" 
+                class="property-card"
+                (click)="viewPropertyDetails(property.propertyId)">
+        <div class="property-image">
+          <img [src]="property.imageURL || getDefaultImage()" 
+               [alt]="property.propertyName"
+               (error)="handleImageError($event)">
+          <div class="property-status" 
+               [class.available]="property.propertyStatus === 'AVAILABLE'"
+               [class.unavailable]="property.propertyStatus === 'UNAVAILABLE'"
+               [class.maintenance]="property.propertyStatus === 'UNDER_MAINTENANCE'">
+            {{property.propertyStatus}}
+          </div>
+        </div>
+        
+        <div class="property-content">
+          <div class="property-header">
+            <h3 class="property-name">{{property.propertyName}}</h3>
+            <div class="property-rating" *ngIf="property.propertyRate > 0">
+              <span class="rating-stars">{{getRatingStars(property.propertyRate)}}</span>
+              <span class="rating-count">({{property.propertyRatingCount}})</span>
+            </div>
+            <div class="property-rating no-rating" *ngIf="property.propertyRate === 0">
+              <span class="rating-text">New Listing</span>
+            </div>
+          </div>
+          
+          <p class="property-location">
+            <mat-icon>location_on</mat-icon>
+            {{property.city}}, {{property.state}}, {{property.country}}
+          </p>
+          
+          <p class="property-description">{{property.propertyDescription}}</p>
+          
+          <div class="property-details">
+            <div class="detail-item">
+              <mat-icon>bed</mat-icon>
+              <span>{{property.noOfRooms}} {{property.noOfRooms === 1 ? 'room' : 'rooms'}}</span>
+            </div>
+            <div class="detail-item">
+              <mat-icon>bathtub</mat-icon>
+              <span>{{property.noOfBathrooms}} {{property.noOfBathrooms === 1 ? 'bath' : 'baths'}}</span>
+            </div>
+            <div class="detail-item">
+              <mat-icon>group</mat-icon>
+              <span>Up to {{property.maxNoOfGuests}} guests</span>
+            </div>
+          </div>
+          
+          <div class="property-amenities" *ngIf="property.hasWifi || property.hasParking || property.hasPool || property.hasAc || property.hasHeater || property.hasPetFriendly">
+            <mat-chip-set>
+              <mat-chip *ngIf="property.hasWifi" class="amenity-chip">
+                <mat-icon matChipAvatar>wifi</mat-icon>
+                WiFi
+              </mat-chip>
+              <mat-chip *ngIf="property.hasParking" class="amenity-chip">
+                <mat-icon matChipAvatar>local_parking</mat-icon>
+                Parking
+              </mat-chip>
+              <mat-chip *ngIf="property.hasPool" class="amenity-chip">
+                <mat-icon matChipAvatar>pool</mat-icon>
+                Pool
+              </mat-chip>
+              <mat-chip *ngIf="property.hasAc" class="amenity-chip">
+                <mat-icon matChipAvatar>ac_unit</mat-icon>
+                AC
+              </mat-chip>
+              <mat-chip *ngIf="property.hasHeater" class="amenity-chip">
+                <mat-icon matChipAvatar>whatshot</mat-icon>
+                Heat
+              </mat-chip>
+              <mat-chip *ngIf="property.hasPetFriendly" class="amenity-chip">
+                <mat-icon matChipAvatar>pets</mat-icon>
+                Pet Friendly
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+          
+          <div class="property-footer">
+            <div class="property-price">
+              <span class="price">{{formatPrice(property.pricePerDay)}}</span>
+              <span class="price-unit">per night</span>
+            </div>
+            <button mat-raised-button 
+                    color="primary" 
+                    class="view-details-btn"
+                    [disabled]="property.propertyStatus !== 'AVAILABLE'">
+              <mat-icon>visibility</mat-icon>
+              {{property.propertyStatus === 'AVAILABLE' ? 'View Details' : 'Unavailable'}}
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

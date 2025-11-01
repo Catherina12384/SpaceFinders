@@ -1,0 +1,148 @@
+<div class="center-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Welcome back</mat-card-title>
+      <mat-card-subtitle>Sign in to your account</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert" style="background-color: rgba(244, 67, 54, 0.1); color: #C62828; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; display: flex; align-items: center; border-left: 4px solid #F44336;">
+        <span class="alert-badge">ERROR</span>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <label>Username</label>
+          <input matInput
+                 id="username"
+                 formControlName="username"
+                 placeholder="Enter your username"
+                 autocomplete="username"
+                 required>
+          <mat-error *ngIf="username?.invalid && username?.touched">
+            {{ getErrorMessage('username') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <label>Password</label>
+          <input matInput
+                 [type]="showPassword ? 'text' : 'password'"
+                 id="password"
+                 formControlName="password"
+                 placeholder="Enter your password"
+                 autocomplete="current-password"
+                 required>
+          <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'" class="password-toggle-btn">
+            <span class="toggle-label">{{ showPassword ? 'HIDE' : 'SHOW' }}</span>
+          </button>
+          <mat-error *ngIf="password?.invalid && password?.touched">
+            {{ getErrorMessage('password') }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-options">
+          <a mat-button color="primary" (click)="navigateToForgotPassword()" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" class="full-width submit-button" [disabled]="isLoading || loginForm.invalid">
+          <span *ngIf="!isLoading">Sign in</span>
+          <span *ngIf="isLoading" style="display: flex; align-items: center; justify-content: center;">
+            <mat-spinner diameter="20" style="margin-right: 8px;"></mat-spinner>
+            Signing in...
+          </span>
+        </button>
+      </form>
+
+      <div class="signup-section">
+        <p>Don't have an account?
+          <button mat-button color="primary" type="button" (click)="navigateToSignup()">
+            Sign up
+          </button>
+        </p>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<style>
+/* Login Component Specific Styles */
+
+/* Card container */
+.login-card {
+  max-width: 420px;
+  width: 100%;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form field container */
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.full-width mat-form-field {
+  width: 100%;
+}
+
+/* Form options row */
+.form-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-top: -8px;
+}
+
+.forgot-link {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Submit button */
+.submit-button {
+  padding: 12px 24px !important;
+  margin-top: 8px;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  height: 44px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142, 192, 124, 0.4) !important;
+}
+
+/* Signup section */
+.signup-section {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(107, 104, 103, 0.3);
+}
+
+.signup-section p {
+  margin: 0;
+  color: #bdae93;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.signup-section button {
+  margin-left: 4px;
+}
+</style>

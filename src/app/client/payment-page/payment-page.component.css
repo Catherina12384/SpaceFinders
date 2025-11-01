@@ -1,0 +1,608 @@
+/* Corporate Payment Page Component Styles */
+
+.transaction-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border: 1px solid #E0E0E0;
+  animation: fadeInContainer 0.3s ease forwards;
+}
+
+@keyframes fadeInContainer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.back-button {
+  background: white;
+  border: 1px solid #E0E0E0;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+  color: #757575;
+}
+
+.back-button:hover {
+  background: #F5F5F5;
+  border-color: #1976D2;
+  color: #1976D2;
+}
+
+.back-button mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0;
+  color: #212121;
+  flex: 1;
+}
+
+/* Message Styles */
+.error-message,
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid;
+}
+
+.error-message {
+  background: rgba(244, 67, 54, 0.1);
+  color: #C62828;
+  border-color: #F44336;
+}
+
+.success-message {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2E7D32;
+  border-color: #4CAF50;
+}
+
+.error-message mat-icon,
+.success-message mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.error-message p,
+.success-message p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Payment Content */
+.payment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border: 1px solid #E0E0E0;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+  margin: 0 0 20px 0;
+  color: #212121;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card h3 {
+  margin: 15px 0 10px 0;
+  color: #212121;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* House Info Card */
+.house-info {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.property-image {
+  width: 180px;
+  height: 140px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+  border: 1px solid #E0E0E0;
+  flex-shrink: 0;
+}
+
+.property-image:hover {
+  transform: scale(1.02);
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.details h3 {
+  font-size: 20px;
+  color: #212121;
+  margin: 0;
+  font-weight: 500;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #757575;
+  margin: 0;
+}
+
+.location mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #757575;
+}
+
+.price {
+  color: #1976D2;
+  font-weight: 500;
+  font-size: 18px;
+  margin: 8px 0 0 0;
+}
+
+/* Summary Card */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.summary .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  color: #212121;
+}
+
+.summary .label {
+  font-size: 14px;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary .label mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #1976D2;
+}
+
+.summary .value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.check-icon {
+  color: #4CAF50 !important;
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.services-section {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.services-section h3 {
+  margin: 10px 0;
+  padding: 10px 0 5px 0;
+}
+
+.services-section .item {
+  padding: 8px 0;
+}
+
+mat-divider {
+  border-top: 1px solid #E0E0E0 !important;
+  margin: 10px 0 !important;
+  height: 1px;
+  display: block;
+  width: 100%;
+}
+
+.total-divider {
+  border-top: 2px solid #1976D2 !important;
+  margin: 15px 0 10px 0 !important;
+}
+
+.price-breakdown {
+  color: #757575;
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+.summary .item.total {
+  padding: 12px 0 0 0;
+}
+
+.summary .item.total .label,
+.summary .item.total .value {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1976D2;
+}
+
+/* Payment Form */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Material Form Field Override */
+.account-field {
+  width: 100%;
+}
+
+.account-field ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.account-field ::ng-deep .mat-form-field-infix {
+  padding: 0.75em 0;
+  border-top: 0;
+}
+
+.account-field ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #E0E0E0;
+}
+
+.account-field ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #1976D2;
+}
+
+.account-field ::ng-deep .mat-form-field-label {
+  color: #757575;
+}
+
+.account-field ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+  color: #1976D2;
+}
+
+.account-field ::ng-deep input {
+  color: #212121;
+  caret-color: #1976D2;
+}
+
+.account-field ::ng-deep .mat-icon {
+  color: #1976D2;
+}
+
+/* Alternative: If Material styling doesn't work, use this simple input */
+.payment-form input[type="text"] {
+  width: 100%;
+  padding: 14px 15px 14px 45px;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  outline: none;
+  background: white;
+  color: #212121;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.payment-form input[type="text"]:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+}
+
+.payment-form input[type="text"]::placeholder {
+  color: #BDBDBD;
+}
+
+.payment-form input[type="text"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #FAFAFA;
+}
+
+.pay-btn {
+  width: 100%;
+  background: #1976D2;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+}
+
+.pay-btn:hover:not(:disabled) {
+  background: #1565C0;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3);
+}
+
+.pay-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pay-btn mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.button-spinner {
+  display: inline-block;
+}
+
+/* Success State */
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-icon-container {
+  margin-bottom: 20px;
+}
+
+.success-icon-large {
+  font-size: 80px !important;
+  width: 80px !important;
+  height: 80px !important;
+  color: #4CAF50;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.success-state h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #212121;
+  margin: 0 0 10px 0;
+}
+
+.success-description {
+  font-size: 14px;
+  color: #757575;
+  margin: 0 0 30px 0;
+  max-width: 450px;
+  line-height: 1.6;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.action-buttons button {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-buttons button[mat-raised-button] {
+  background: #1976D2;
+  border: none;
+  color: white;
+}
+
+.action-buttons button[mat-raised-button]:hover {
+  background: #1565C0;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3);
+}
+
+.action-buttons button[mat-stroked-button] {
+  background: transparent;
+  border: 1px solid #1976D2;
+  color: #1976D2;
+}
+
+.action-buttons button[mat-stroked-button]:hover {
+  background: rgba(25, 118, 210, 0.08);
+  border-color: #1565C0;
+  color: #1565C0;
+}
+
+.action-buttons button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s forwards;
+}
+
+.delay-1 { 
+  animation-delay: 0.1s; 
+  opacity: 0;
+}
+
+.delay-2 { 
+  animation-delay: 0.2s; 
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .transaction-container { 
+    padding: 20px; 
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .house-info {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .property-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+
+  .success-icon-large {
+    font-size: 60px !important;
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .success-state h3 {
+    font-size: 20px;
+  }
+
+  .action-buttons {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 20px;
+  }
+
+  .back-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .details h3 {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .summary .item.total .label,
+  .summary .item.total .value {
+    font-size: 18px;
+  }
+}

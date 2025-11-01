@@ -1,0 +1,160 @@
+<div class="add-review-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <button (click)="goBack()" class="back-button">
+        <span class="back-label">← BACK</span>
+      </button>
+      <h1>Add Review</h1>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading booking details...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    <mat-icon>error</mat-icon>
+    <p>{{errorMessage}}</p>
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    <mat-icon>check_circle</mat-icon>
+    <p>{{successMessage}}</p>
+  </div>
+
+  <!-- Review Content -->
+  <div *ngIf="!isLoading && booking" class="review-content">
+    <div class="review-layout">
+      <!-- Booking Summary Card -->
+      <mat-card class="booking-summary-card">
+        <div class="booking-summary-header">
+          <h2>Your Stay</h2>
+        </div>
+        
+        <div class="booking-summary-image">
+          <img [src]="booking.propertyImage || getDefaultImage()" 
+               [alt]="booking.propertyName"
+               (error)="handleImageError($event)">
+        </div>
+        
+        <div class="booking-summary-info">
+          <h3>{{booking.propertyName}}</h3>
+          <p class="location">
+            <mat-icon>location_on</mat-icon>
+            {{booking.city}}
+          </p>
+          
+          <div class="stay-dates">
+            <div class="date-item">
+              <mat-icon>login</mat-icon>
+              <div>
+                <span class="date-label">Check-in</span>
+                <span class="date-value">{{formatDate(booking.checkinDate)}}</span>
+              </div>
+            </div>
+            <div class="date-item">
+              <mat-icon>logout</mat-icon>
+              <div>
+                <span class="date-label">Check-out</span>
+                <span class="date-value">{{formatDate(booking.checkoutDate)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Review Form Card -->
+      <mat-card class="review-form-card">
+        <div class="review-form-header">
+          <h2>Rate Your Experience</h2>
+          <p>Your feedback helps other guests make informed decisions</p>
+        </div>
+        
+        <form [formGroup]="reviewForm" (ngSubmit)="submitReview()" class="review-form">
+          <div class="rating-section">
+            <h3>Overall Rating</h3>
+            
+            <div class="star-rating">
+              <button type="button"
+                      *ngFor="let star of [1, 2, 3, 4, 5]"
+                      class="star-button"
+                      [class.star-filled]="star <= (hoveredRating || ratingValue)"
+                      (click)="setRating(star)"
+                      (mouseenter)="setHoveredRating(star)"
+                      (mouseleave)="clearHoveredRating()">
+                <mat-icon>{{getStarIcon(star)}}</mat-icon>
+              </button>
+            </div>
+            
+            <div class="rating-text">
+              <span class="rating-value" *ngIf="ratingValue > 0">{{ratingValue}}.0</span>
+              <span class="rating-label">{{getRatingText()}}</span>
+            </div>
+            
+            <p class="rating-hint" *ngIf="ratingValue === 0">Click on the stars to rate your experience</p>
+          </div>
+                    
+          <div class="rating-guide">
+            <h4>Rating Guide</h4>
+            <div class="guide-items">
+              <div class="guide-item">
+                <div class="guide-stars">
+                  <mat-icon>star</mat-icon>
+                  <span>1</span>
+                </div>
+                <span class="guide-label">Poor</span>
+              </div>
+              <div class="guide-item">
+                <div class="guide-stars">
+                  <mat-icon>star</mat-icon>
+                  <span>2</span>
+                </div>
+                <span class="guide-label">Fair</span>
+              </div>
+              <div class="guide-item">
+                <div class="guide-stars">
+                  <mat-icon>star</mat-icon>
+                  <span>3</span>
+                </div>
+                <span class="guide-label">Good</span>
+              </div>
+              <div class="guide-item">
+                <div class="guide-stars">
+                  <mat-icon>star</mat-icon>
+                  <span>4</span>
+                </div>
+                <span class="guide-label">Very Good</span>
+              </div>
+              <div class="guide-item">
+                <div class="guide-stars">
+                  <mat-icon>star</mat-icon>
+                  <span>5</span>
+                </div>
+                <span class="guide-label">Excellent</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button mat-button type="button" (click)="goBack()">
+              Cancel
+            </button>
+            <button mat-raised-button 
+                    color="primary" 
+                    type="submit"
+                    [disabled]="reviewForm.invalid || ratingValue === 0 || isSubmitting">
+              <mat-spinner *ngIf="isSubmitting" diameter="20"></mat-spinner>
+              <mat-icon *ngIf="!isSubmitting">send</mat-icon>
+              {{isSubmitting ? 'Submitting...' : 'Submit Review'}}
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,423 @@
+/* Corporate Add Review Component Styles */
+
+.add-review-container {
+  min-height: 100vh;
+  background-color: #FAFAFA;
+  padding: 24px;
+}
+
+/* Header */
+.header {
+  margin-bottom: 32px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #212121;
+}
+
+.back-button {
+  color: #757575 !important;
+}
+
+.back-button:hover {
+  color: #1976D2 !important;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: #212121;
+}
+
+/* Loading & Messages */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  color: #212121;
+}
+
+.loading-container p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #757575;
+}
+
+.error-message,
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  animation: slideIn 0.3s ease;
+}
+
+.error-message {
+  background: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #F44336;
+}
+
+.success-message {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #4CAF50;
+}
+
+/* Review Layout */
+.review-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.review-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Booking Summary Card */
+.booking-summary-card {
+  position: sticky;
+  top: 24px;
+  background-color: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.booking-summary-header {
+  padding: 20px;
+  border-bottom: 1px solid #E0E0E0;
+  background-color: #FAFAFA;
+}
+
+.booking-summary-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.booking-summary-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #F5F5F5;
+}
+
+.booking-summary-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-summary-info {
+  padding: 20px;
+}
+
+.booking-summary-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #757575;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.location mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #757575;
+}
+
+.stay-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.date-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.date-item mat-icon {
+  color: #1976D2;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.date-item > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-label {
+  font-size: 11px;
+  color: #757575;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.date-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+}
+
+/* Review Form Card */
+.review-form-card {
+  padding: 32px;
+  background-color: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.review-form-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.review-form-header h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.review-form-header p {
+  margin: 0;
+  color: #757575;
+  font-size: 14px;
+}
+
+/* Rating Section */
+.rating-section {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.rating-section h3 {
+  margin: 0 0 30px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.2s ease;
+  color: #E0E0E0;
+}
+
+.star-button:hover {
+  transform: scale(1.1);
+}
+
+.star-button mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.star-button.star-filled {
+  color: #FF9800;
+}
+
+.rating-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.rating-value {
+  font-size: 32px;
+  font-weight: 500;
+  color: #1976D2;
+}
+
+.rating-label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #757575;
+}
+
+.rating-hint {
+  color: #BDBDBD;
+  font-size: 13px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Rating Guide */
+.rating-guide {
+  margin: 30px 0;
+  padding: 20px;
+  background: #FAFAFA;
+  border-radius: 4px;
+  border: 1px solid #E0E0E0;
+}
+
+.rating-guide h4 {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+  text-align: center;
+}
+
+.guide-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.guide-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.guide-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #FF9800;
+}
+
+.guide-stars mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.guide-stars span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.guide-label {
+  font-size: 11px;
+  color: #757575;
+  text-align: center;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #E0E0E0;
+}
+
+.form-actions button {
+  min-width: 120px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.form-actions mat-spinner {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .review-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .booking-summary-card {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .add-review-container {
+    padding: 16px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+  }
+  
+  .review-form-card {
+    padding: 20px;
+  }
+  
+  .star-button mat-icon {
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .guide-items {
+    flex-wrap: wrap;
+  }
+  
+  .guide-item {
+    flex-basis: calc(33.333% - 10px);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
