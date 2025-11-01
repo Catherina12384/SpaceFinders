@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+<<<<<<< HEAD
+    <file url="file://$PROJECT_DIR$/Sprint_2/Sprint_2/Main/src/main/java" charset="UTF-8" />
+=======
+    <file url="file://$PROJECT_DIR$/Backend/Main/src/main/java" charset="UTF-8" />
+>>>>>>> ac90465 (Notification backend stable and successful)
+  </component>
+</project>

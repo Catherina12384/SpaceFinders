@@ -1,0 +1,100 @@
+-- Users Table Data
+
+INSERT INTO users (username, password, user_mail, user_phone, user_address, user_role, user_status) VALUES
+('admin_user', '#Password123', 'admin@spacefinders.com', '+919876543210', '123 MG Road, Bangalore, Karnataka', 'ADMIN', 'ACTIVE'),
+('john_doe', '#Ppass1234', 'john.doe@gmail.com', '+919876543211', '45 Park Street, Mumbai, Maharashtra', 'CLIENT', 'ACTIVE'),
+('jane_smith', '#Pjane@pass', 'jane.smith@yahoo.com', '+919876543212', '78 Residency Road, Hyderabad, Telangana', 'HOST', 'ACTIVE'),
+('rahul_kumar', '#Prahul123', 'rahul.k@outlook.com', '+919876543213', '12 Brigade Road, Chennai, Tamil Nadu', 'CLIENT', 'ACTIVE'),
+('priya_sharma', '#Ppriya@456', 'priya.sharma@gmail.com', '+919876543214', '56 Church Street, Pune, Maharashtra', 'HOST', 'ACTIVE'),
+('amit_verma', '#Pamit7890', 'amit.verma@rediffmail.com', '+919876543215', '89 Indiranagar, Bangalore, Karnataka', 'CLIENT', 'ACTIVE'),
+('sneha_patel', 'sneha#P999', 'sneha.patel@gmail.com', '+919876543216', '34 Koramangala, Bangalore, Karnataka', 'HOST', 'ACTIVE'),
+('vikram_singh', 'vik#Pram@321', 'vikram.singh@yahoo.com', '+919876543217', '67 Bandra West, Mumbai, Maharashtra', 'CLIENT', 'ACTIVE'),
+('anjali_reddy', 'anj#Pali555', 'anjali.reddy@gmail.com', '+919876543218', '23 Jubilee Hills, Hyderabad, Telangana', 'HOST', 'ACTIVE'),
+('karan_mehta', 'kara#Pn@789', 'karan.mehta@outlook.com', '+919876543219', '91 Connaught Place, Delhi', 'CLIENT', 'BLOCKED'),
+('neha_gupta', 'ne#Pha1234', 'neha.gupta@gmail.com', '+919876543220', '45 Salt Lake, Kolkata, West Bengal', 'HOST', 'ACTIVE'),
+('rohan_joshi', 'rohan@#Pabc', 'rohan.joshi@yahoo.com', '+919876543221', '78 Whitefield, Bangalore, Karnataka', 'CLIENT', 'ACTIVE'),
+('divya_nair', 'div#Pya9999', 'divya.nair@gmail.com', '+919876543222', '12 Marine Drive, Kochi, Kerala', 'HOST', 'ACTIVE'),
+('arjun_pillai', 'arjun@5#P67', 'arjun.pillai@rediffmail.com', '+919876543223', '56 Velachery, Chennai, Tamil Nadu', 'CLIENT', 'ACTIVE'),
+('pooja_iyer', 'poo#Pja@321', 'pooja.iyer@gmail.com', '+919876543224', '89 HSR Layout, Bangalore, Karnataka', 'HOST', 'DELETED'),
+('sanjay_rao', 'sanjay1#P11', 'sanjay.rao@outlook.com', '+919876543225', '34 Hitech City, Hyderabad, Telangana', 'CLIENT', 'ACTIVE'),
+('kavya_desai', 'kavya@#P888', 'kavya.desai@yahoo.com', '+919876543226', '67 Andheri East, Mumbai, Maharashtra', 'HOST', 'ACTIVE'),
+('aditya_kapoor', 'ad#Pitya456', 'aditya.kapoor@gmail.com', '+919876543227', '23 Sector 18, Noida, Uttar Pradesh', 'CLIENT', 'ACTIVE'),
+('riya_bansal', 'riya@7#P77', 'riya.bansal@rediffmail.com', '+919876543228', '91 Cyber City, Gurgaon, Haryana', 'HOST', 'ACTIVE'),
+('manish_agarwal', 'mani#Psh999', 'manish.agarwal@gmail.com', '+919876543229', '45 Vastrapur, Ahmedabad, Gujarat', 'CLIENT', 'BLOCKED'),
+('sakshi_yadav', 'sakshi@#P123', 'sakshi.yadav@outlook.com', '+919876543230', '78 Aundh, Pune, Maharashtra', 'HOST', 'ACTIVE'),
+('nikhil_malhotra', 'nikh#Pil555', 'nikhil.malhotra@yahoo.com', '+919876543231', '12 Electronic City, Bangalore, Karnataka', 'CLIENT', 'ACTIVE'),
+('isha_khanna', 'isha@#P999', 'isha.khanna@gmail.com', '+919876543232', '56 Saket, Delhi', 'HOST', 'ACTIVE'),
+('varun_chopra', 'varu#Pn1234', 'varun.chopra@rediffmail.com', '+919876543233', '89 Powai, Mumbai, Maharashtra', 'CLIENT', 'ACTIVE'),
+('meera_krishnan', 'meera@#P456', 'meera.krishnan@gmail.com', '+919876543234', '34 T Nagar, Chennai, Tamil Nadu', 'HOST', 'ACTIVE');
+
+-- Property Table Data
+
+INSERT INTO property (property_name, property_description, no_of_rooms, no_of_bathrooms, max_no_of_guests, price_per_day, user_id, imageUrl, address_id, has_wifi, has_parking, has_pool, has_ac, has_heater, has_pet_friendly, property_status, property_rate, property_rating_count) VALUES
+('Sunset Villa', 'Luxurious 3BHK villa with stunning sunset views and modern amenities. Perfect for families.', 3, 2, 6, 5500.00, 3, 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*EeUSITAmhPij7jNFHaltJw.jpeg', 1, true, true, true, true, false, true, 'AVAILABLE', 4.8, 45),
+('Urban Studio', 'Cozy studio apartment in the heart of the city. Ideal for solo travelers or couples.', 1, 1, 2, 2500.00, 5, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1439815070502947634/original/2e12165b-03df-4514-8c6d-0675880aa865.jpeg?im_w=720', 2, true, false, false, true, false, false, 'AVAILABLE', 4.5, 28),
+('Beach House Paradise', 'Spacious beach house with direct ocean access. Wake up to the sound of waves.', 4, 3, 8, 8500.00, 7, 'https://a0.muscache.com/im/pictures/miso/Hosting-1094771440597889199/original/396e39d5-12b4-4442-ae8b-3c09940b693b.jpeg?im_w=960', 3, true, true, true, true, false, true, 'AVAILABLE', 4.9, 67),
+('Mountain Retreat', 'Peaceful cottage nestled in the mountains. Perfect for nature lovers.', 2, 2, 4, 4000.00, 9, 'https://a0.muscache.com/im/pictures/miso/Hosting-1308451056848438354/original/df042d04-49eb-422b-bec9-591b156ce1c4.jpeg?im_w=960', 4, true, true, false, false, true, true, 'AVAILABLE', 4.6, 34),
+('City Center Apartment', 'Modern 2BHK apartment with all amenities in prime location.', 2, 2, 4, 3500.00, 11, 'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ1Mjc3MTkzOTk4NzA5MzU4Mg==/original/137ae6d5-944d-4b99-a0ad-c0df5533823f.jpeg?im_w=720', 5, true, true, false, true, false, false, 'AVAILABLE', 4.4, 52),
+('Garden Villa', 'Beautiful villa surrounded by lush gardens. Great for family gatherings.', 3, 3, 7, 6000.00, 13, 'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA4NTMzNzcxMDYyMjk0ODc2OQ%3D%3D/original/c9b707e1-307b-4b4c-adec-b54a6593d4f3.jpeg?im_w=720', 6, true, true, true, true, true, true, 'AVAILABLE', 4.7, 41),
+('Penthouse Suite', 'Luxury penthouse with panoramic city views. Top-floor living at its finest.', 4, 4, 8, 12000.00, 17, 'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA0NTg1OTQ5NDI5NTk5ODQ0Mw==/original/6e681b3a-51a6-4fbf-84d6-094f3eb27040.jpeg?im_w=720', 7, true, true, true, true, false, false, 'UNAVAILABLE', 4.9, 23),
+('Budget Studio', 'Affordable studio with basic amenities. Great value for money.', 1, 1, 2, 1800.00, 19, 'https://a0.muscache.com/im/pictures/hosting/Hosting-17157615/original/d8016829-2668-4b02-a4e2-3a49e3dff4cd.jpeg?im_w=720', 8, true, false, false, true, false, false, 'AVAILABLE', 4.2, 19),
+('Lake View Cottage', 'Charming cottage overlooking a serene lake. Perfect weekend getaway.', 2, 1, 4, 3800.00, 21, 'https://a0.muscache.com/im/pictures/c6007178-d831-4997-af85-d59b361aff14.jpg?im_w=960', 9, true, true, false, true, true, true, 'AVAILABLE', 4.6, 38),
+('Skyline Apartment', 'High-rise apartment with breathtaking skyline views.', 2, 2, 5, 4500.00, 3, 'https://a0.muscache.com/im/pictures/e0a3ab2a-7ed1-458d-b233-da77bdf27299.jpg?im_w=720', 10, true, true, true, true, false, false, 'AVAILABLE', 4.5, 47),
+('Heritage Bungalow', 'Restored heritage property with old-world charm and modern comforts.', 5, 4, 10, 9500.00, 5, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1480397641853522516/original/891d91be-ea2c-4d59-9f49-fcadb873ced0.jpeg?im_w=720', 11, true, true, true, true, true, true, 'AVAILABLE', 4.8, 56),
+('Riverside Retreat', 'Peaceful property by the river. Perfect for meditation and relaxation.', 3, 2, 6, 5200.00, 7, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1499138404712152368/original/37f423c8-84e1-4cd3-8bda-5255a5f7791d.jpeg?im_w=720', 12, true, true, false, true, false, true, 'AVAILABLE', 4.7, 44),
+('Downtown Loft', 'Industrial-style loft in trendy downtown area. Walking distance to cafes.', 1, 1, 3, 3200.00, 9, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1291479668666957254/original/9e9a0963-0ad4-4920-a368-6169e5ccd5cc.jpeg?im_w=720', 13, true, false, false, true, false, true, 'AVAILABLE', 4.4, 31),
+('Hilltop Villa', 'Stunning villa on a hilltop with 360-degree views.', 4, 3, 8, 7800.00, 11, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1154695577407941787/original/a100707d-0e69-4e02-befd-8f4b1bb23fdd.jpeg?im_w=720', 14, true, true, true, true, true, true, 'AVAILABLE', 4.9, 62),
+('Compact Studio', 'Small but efficient studio for budget-conscious travelers.', 1, 1, 2, 1500.00, 13, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1415563776108378624/original/8d7eaabf-bfc0-41b7-9f5b-d9cc01b90774.jpeg?im_w=720', 15, true, false, false, false, false, false, 'AVAILABLE', 4.0, 15),
+('Luxury Farmhouse', 'Expansive farmhouse with organic gardens and farm animals.', 5, 4, 12, 11000.00, 17, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1415964874125755423/original/537c9db3-8f79-400e-9bb0-433fdc4b3ba1.jpeg?im_w=720', 16, true, true, true, true, true, true, 'AVAILABLE', 4.8, 39),
+('Seaside Apartment', 'Cozy apartment just steps away from the beach.', 2, 1, 4, 4200.00, 19, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1470756713214984899/original/a0d17153-f0ee-4f67-8910-956974b7ddb2.jpeg?im_w=720', 17, true, true, false, true, false, true, 'UNAVAILABLE', 4.5, 33),
+('Forest Cabin', 'Rustic cabin deep in the forest. Disconnect and unwind.', 2, 1, 4, 3500.00, 21, 'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM0NDc0MzA5MTU0Nzc1NDUz/original/8e38fcac-3740-43de-bf99-be92dad39aa3.jpeg?im_w=720', 18, false, true, false, false, true, true, 'AVAILABLE', 4.6, 27),
+('Smart Home', 'Tech-enabled apartment with automated features and voice control.', 2, 2, 4, 5000.00, 3, 'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQyMDAwMTAzNDUyOTQ4MTkzMg==/original/bb3a1533-9857-4e2d-9885-3ad87e615a4f.jpeg?im_w=720', 19, true, true, false, true, true, false, 'AVAILABLE', 4.7, 51),
+('Artist Loft', 'Creative space with high ceilings and natural light. Perfect for artists.', 1, 1, 2, 2800.00, 5, 'https://a0.muscache.com/im/pictures/20b7b2e6-d7b5-44f8-a55d-9ceb6d448605.jpg?im_w=720', 20, true, false, false, true, false, true, 'AVAILABLE', 4.3, 22),
+('Family Villa', 'Large villa designed for big families with kids play area.', 4, 3, 10, 7500.00, 7, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1298616617787137636/original/261dbfb6-0a06-44df-8b3a-28f56fb6c3b1.jpeg?im_w=720', 21, true, true, true, true, false, true, 'AVAILABLE', 4.8, 58),
+('Executive Suite', 'Premium suite with office space and business amenities.', 2, 2, 3, 6500.00, 9, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1332999056848816516/original/cc93fad9-5a6a-45e6-b0d9-af7d777493c0.jpeg?im_w=720', 22, true, true, true, true, false, false, 'AVAILABLE', 4.6, 36),
+('Countryside Home', 'Traditional home in peaceful countryside setting.', 3, 2, 6, 4800.00, 11, 'https://a0.muscache.com/im/pictures/miso/Hosting-1384543061694830478/original/c11cfd8e-c1b5-4b6a-a00a-41a64408691e.jpeg?im_w=720', 23, true, true, false, true, true, true, 'AVAILABLE', 4.5, 42),
+('Rooftop Apartment', 'Unique apartment with private rooftop terrace.', 2, 1, 4, 5500.00, 13, 'https://a0.muscache.com/im/pictures/hosting/Hosting-1495513982231217999/original/4de4584e-946e-4e23-a541-3b36fd5def41.jpeg?im_w=720', 24, true, true, false, true, false, true, 'AVAILABLE', 4.7, 49),
+('Colonial Mansion', 'Grand colonial-style mansion with vintage architecture.', 6, 5, 14, 15000.00, 17, 'https://a0.muscache.com/im/pictures/miso/Hosting-1245708192365065706/original/9f909f0e-dd0b-45c2-8e79-15b606d7aa5c.jpeg?im_w=720', 25, true, true, true, true, true, true, 'AVAILABLE', 4.9, 71);
+
+-- Address Table Data
+
+INSERT INTO address (building_no, street, city, state, country, postal_code) VALUES
+('101', 'Main St', 'New York', 'NY', 'USA', '10001'),
+('2B', 'Oak Ave', 'Los Angeles', 'CA', 'USA', '90001'),
+('Unit 5', 'Elm Blvd', 'Chicago', 'IL', 'USA', '60601'),
+('Apt 301', 'Maple Ln', 'Houston', 'TX', 'USA', '77001'),
+('45', 'Pine Dr', 'Phoenix', 'AZ', 'USA', '85001'),
+('Suite 200', 'Cedar Rd', 'Philadelphia', 'PA', 'USA', '19101'),
+('123B', 'Birch Ct', 'San Antonio', 'TX', 'USA', '78201'),
+('Ground Flr', 'Spruce Pl', 'San Diego', 'CA', 'USA', '92101'),
+('902', 'Willow Way', 'Dallas', 'TX', 'USA', '75201'),
+('Unit 15', 'Cypress St', 'San Jose', 'CA', 'USA', '95101'),
+('777', 'Juniper Aly', 'Austin', 'TX', 'USA', '73301'),
+('11C', 'Sycamore Pk', 'Jacksonville', 'FL', 'USA', '32099'),
+('Warehouse 3', 'Redwood Cir', 'Fort Worth', 'TX', 'USA', '76101'),
+('Lobby', 'Poplar Sq', 'Columbus', 'OH', 'USA', '43201'),
+('14', 'Ash St Ext', 'Charlotte', 'NC', 'USA', '28201'),
+('600', 'Hickory Cr', 'San Francisco', 'CA', 'USA', '94101'),
+('Bldg D', 'Magnolia Pth', 'Indianapolis', 'IN', 'USA', '46201'),
+('88', 'Dogwood Terr', 'Seattle', 'WA', 'USA', '98101'),
+('3F', 'Laurel Ave', 'Denver', 'CO', 'USA', '80201'),
+('19', 'Walnut Rd', 'Washington', 'DC', 'USA', '20001'),
+('Apt 10', 'Chestnut Grv', 'Boston', 'MA', 'USA', '02101'),
+('404', 'Linden Pl', 'El Paso', 'TX', 'USA', '79901'),
+('12A', 'Fir Blvd', 'Detroit', 'MI', 'USA', '48201'),
+('Penthouse', 'Palm Dr', 'Memphis', 'TN', 'USA', '38101'),
+('Office 50', 'Sandalwood Ln', 'Portland', 'OR', 'USA', '97201');
+
+-- Booking Table
+INSERT INTO booking (property_id, user_id, checkin_date, checkout_date, is_payment_status, is_booking_status, has_extra_cot, has_deep_clean)
+VALUES
+(1, 2, '2025-11-05', '2025-11-10', TRUE, 'BOOKED', FALSE, TRUE),
+(2, 4, '2025-11-08', '2025-11-12', TRUE, 'BOOKED', TRUE, FALSE),
+(3, 6, '2025-11-15', '2025-11-20', FALSE, 'CLOSED', FALSE, FALSE),
+(4, 8, '2025-11-10', '2025-11-15', TRUE, 'BOOKED', FALSE, TRUE),
+(5, 10, '2025-12-01', '2025-12-05', TRUE, 'BOOKED', TRUE, TRUE),
+(6, 12, '2025-11-18', '2025-11-22', FALSE, 'CLOSED', FALSE, FALSE),
+(7, 14, '2025-11-25', '2025-11-30', TRUE, 'BOOKED', TRUE, FALSE),
+(8, 16, '2025-12-10', '2025-12-15', TRUE, 'BOOKED', FALSE, TRUE),
+(9, 18, '2025-12-05', '2025-12-08', FALSE, 'CLOSED', FALSE, FALSE),
+(10, 20, '2025-11-28', '2025-12-02', TRUE, 'BOOKED', TRUE, TRUE);
